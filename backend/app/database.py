@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, DateTime
 from app.config import settings
 from datetime import datetime
 
-engine = create_engine(settings.DATA_BASE_URL)
+engine = create_engine(settings.DATA_BASE_URL, pool_pre_ping=True, pool_recycle=300)
 
 # 数据库session会话的连接工厂
 SessionLocal = sessionmaker(bind=engine, autoflush=False)
